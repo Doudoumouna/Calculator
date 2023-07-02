@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  background-color: #1e90ff;
+  width: 100%;
+  max-width: 375px;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.display {
+  min-height: 200px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: white;
+  text-align: right;
+  flex: 1 1 0%;
+}
+
+.display .input {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.display .output {
+  font-size: 3rem;
+  font-weight: 700;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.display .operator {
+  color: #eb6666;
+}
+
+.display .brackets,
+.display .percent {
+  color: #26fed7;
+}
+
+.keys {
+  background-color: #00bfff;
+  padding: 1.5rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 1rem;
+  box-shadow: opx -2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.keys .key {
+  position: relative;
+  cursor: pointer;
+
+  display: block;
+  height: 0;
+  padding-top: 100%;
+  background-color: #00ced1;
+  border-radius: 1rem;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.keys .key span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.keys .key:hover {
+  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.keys .key.operator span {
+  color: #eb6666;
+}
+
+.keys .key.action span {
+  color: #26fed7;
+}
+
+/*
+    * bezieht sich auf alle Elemente auf der Seite und definiert einige grundlegende Stile. Hier werden der Außenabstand (margin) und der Innenabstand (padding) auf 0 gesetzt, das Boxmodell auf "border-box" festgelegt und die Schriftart auf "sans-serif" gesetzt.
+
+    .app definiert den Stil für den Container, der die gesamte Anwendung umschließt. Es wird ein flexibles Layout verwendet, um den Inhalt zentriert horizontal und vertikal in der Mitte des Bildschirms anzuzeigen. Die Höhe (height) des Containers wird auf 100% der Bildschirmhöhe (viewport height) festgelegt.
+
+    .calculator definiert den Stil für den Taschenrechner-Container. Der Hintergrund wird auf die Farbe "#1e90ff" gesetzt. Die Breite wird auf 100% der verfügbaren Breite festgelegt, mit einer maximalen Breite von 375px. Die Mindesthöhe wird auf 640px festgelegt. Es wird ein flexibles Layout mit einer vertikalen Ausrichtung verwendet. Die Ecken werden abgerundet (border-radius: 1.5rem) und der Inhalt, der über die Grenzen hinausragt, wird ausgeblendet (overflow: hidden).
+
+    .display definiert den Stil für das Anzeigefeld des Taschenrechners. Die Mindesthöhe wird auf 200px festgelegt und ein Innenabstand (padding) von 1.5rem wird hinzugefügt. Es wird ein flexibles Layout verwendet, um den Inhalt rechts unten auszurichten. Die Textfarbe wird auf weiß (color: white) gesetzt und der Text wird rechtsbündig ausgerichtet (text-align: right). Der Inhalt des Anzeigefelds nimmt den verfügbaren Platz ein (flex: 1 1 0%).
+
+    .display .input definiert den Stil für das Eingabefeld innerhalb des Anzeigefelds. Die Schriftgröße wird auf 1.25rem festgelegt und ein Außenabstand (margin-bottom) von 0.5rem wird hinzugefügt.
+
+    .display .output definiert den Stil für das Ausgabefeld innerhalb des Anzeigefelds. Die Schriftgröße wird auf 3rem festgelegt, die Schriftstärke (font-weight) auf 700, und das Ausgabefeld wird so konfiguriert, dass es horizontal scrollbar ist, wenn der Inhalt breiter als das Feld ist (overflow: auto).
+
+    .display .operator definiert den Stil für Operatoren im Anzeigefeld. Die Textfarbe wird auf "#eb6666" gesetzt.
+
+    .display .brackets, .display .percent definiert den Stil für Klammern und Prozentzeichen im Anzeigefeld. Die Textfarbe wird auf "#26fed7" gesetzt.
+
+    .keys definiert den Stil für den Tastenbereich des Taschenrechners. Der Hintergrund wird auf die Farbe "#00bfff" gesetzt, ein Innenabstand (padding) von 1.5rem wird hinzugefügt, und die Ecken werden oben abgerundet (border-radius: 1.5rem 1.5rem 0 0). Ein Rasterlayout wird verwendet, um die Tasten anzuordnen, mit 4 Spalten und 5 Reihen. Der Abstand zwischen den Tasten wird auf 1rem festgelegt (grid-gap). Ein Schatten (box-shadow) wird hinzugefügt, um den Tastenbereich visuell abzuheben.
+
+    .keys .key definiert den Stil für eine einzelne Taste. Sie wird relativ positioniert und hat eine Höhe von 0 und einen oberen Innenabstand (padding-top) von 100%, um ein quadratisches Verhältnis beizubehalten. Der Hintergrund wird auf "#00ced1" gesetzt und die Ecken werden abgerundet (border-radius: 1rem). Es erfolgt ein Übergangseffekt (transition) von 0.2s bei Interaktion mit der Maus. Die Textauswahl (user-select) wird deaktiviert.
+
+    .keys .key span definiert den Stil für den sichtbaren Text innerhalb einer Taste. Der Text wird horizontal und vertikal zentriert und die Schriftgröße wird auf 2rem festgelegt. Die Schriftstärke wird auf 700 (fett) und die Textfarbe auf weiß (color: #fff) gesetzt.
+
+    .keys .key:hover definiert den Stil für eine Taste, wenn sie mit der Maus überfahren wird. Es wird ein Schatteneffekt (box-shadow) hinzugefügt, um die Taste visuell hervorzuheben.
+
+    .keys .key.operator span definiert den Stil für den Text innerhalb einer Operator-Taste. Die Textfarbe wird auf "#eb6666" gesetzt.
+
+    .keys .key.action span definiert den Stil für den Text innerhalb einer Aktionstaste. Die Textfarbe wird auf "#26fed7" gesetzt.
+*/
